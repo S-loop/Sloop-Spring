@@ -42,7 +42,7 @@
 					</div>
 					<div class="col-4">
 						<div class="form-check">
-							<input type="radio" class="form-check-input" name="categoryPostIdx" id="category3" value="2" ${noticeDTO.categoryPostIdx == 3 ? 'checked' : ''}>
+							<input type="radio" class="form-check-input" name="categoryPostIdx" id="category3" value="3" ${noticeDTO.categoryPostIdx == 3 ? 'checked' : ''}>
 							<label class="form-check-label" for="category3">이벤트</label>
 						</div>
 					</div>
@@ -56,8 +56,12 @@
 		<div >
 			<button type="button" class="btn btn-sm btn-success" id="writeBtn">저장</button>
 			<button type="button" class="bn btn-sm btn-primary"  onclick="javascript:location.href='/notice/list';">목록</button>
+
+			<div style='width:80px;float: right;'>
+				<input type='button' class="btn btn-sm btn-primary" onclick="location.href='/'" name='btn2' value='홈'>
+
+			</div>
 		</div>
-	</div>
 </section>
 <!-- 푸터 임포트 -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
