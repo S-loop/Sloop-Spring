@@ -13,25 +13,25 @@
 			<input type="hidden" name="postIdx" id="postIdx" value="${noticeDTO.postIdx}">
 			<div class="mb-3">
 				<label for="title">조회수</label>
-				<input type="text" class="form-control" name="postNoticeTitle" id="postNoticeHits" 	readonly 	value="${noticeDTO.postNoticeHits}">
+				<input type="text" class="form-control" name="postNoticeTitle" id="postNoticeHits" readonly value="${noticeDTO.postNoticeHits}">
 			</div>
 			<div class="mb-3">
 				<label for="title">제목</label>
-				<input type="text" class="form-control" name="postNoticeTitle" id="postNoticeTitle" 	readonly 	value="${noticeDTO.postNoticeTitle}">
+				<input type="text" class="form-control" name="postNoticeTitle" id="postNoticeTitle" readonly value="${noticeDTO.postNoticeTitle}">
 			</div>
 			<div class="mb-3">
 				<label for="reg_id">카테고리</label>
-				<input type="text" class="form-control" name="categoryPostIdx" id="categoryPostIdx" 	readonly	value="${noticeDTO.categoryPostIdx}"	>
+				<input type="text" class="form-control" name="categoryPostName" id="categoryPostName" readonly value="${noticeDTO.categoryPostName}" >
 			</div>
 			<div class="mb-3">
 				<label for="reg_id">작성자</label>
 				<!-- 로그인기능 오류로 임시 강제값 지정 -->
-				<input type="text" class="form-control" name="memberIdx" id="memberIdx"	readonly	value="${noticeDTO.memberIdx}"	>
+				<input type="text" class="form-control" name="memberIdx" id="memberIdx" readonly value="${noticeDTO.memberIdx}" >
 			</div>
 
 			<div class="mb-3">
 				<label for="content">내용</label>
-				<textarea class="form-control" rows="5" name="postNoticeContents" id=postNoticeContents 	readonly >${noticeDTO.postNoticeContents}</textarea>
+				<textarea class="form-control" rows="5" name="postNoticeContents" id=postNoticeContents readonly >${noticeDTO.postNoticeContents}</textarea>
 			</div>
 		</form>
 		<div class="mb-3">
@@ -47,9 +47,14 @@
 		<div >
 			<button type="button" class="btn btn-sm btn-success" id="modBtn">수정</button>
 			<button type="button" class="btn btn-sm btn-danger" id="delBtn">삭제</button>
-			<button type="button" class="btn btn-sm btn-primary"  onclick="javascript:location.href='/notice/list';">목록</button>
+			<button type="button" class="btn btn-sm btn-primary" onclick="javascript:location.href='/notice/list';">목록</button>
 		</div>
-	</div>
+
+		<div style='width:80px;float: right;'>
+			<input type='button' class="btn btn-sm btn-primary" onclick="location.href='/'" name='btn2' value='홈'>
+
+		</div>
+
 </section>
 <!-- 푸터 임포트 -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
