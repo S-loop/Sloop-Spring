@@ -24,11 +24,11 @@
 			</form>
 		</div>
 		<div>
-			<h2>게시판 목록</h2>
+			<h2>공지사항 목록</h2>
 			<table class="table table-striped table-hover">
 				<thead>
 				<tr>
-					<th scope="col" class="w-auto p-3">연번</th>
+					<th scope="col" class="w-auto p-3">순번</th>
 					<th scope="col" class="w-50 p-3">제목</th>
 					<th scope="col" class="w-auto p-3">작성자</th>
 					<th scope="col" class="w-auto p-3">카테고리</th>
@@ -58,7 +58,7 @@
 								</td>
 								<td>
 									<a href="<c:url value="/notice/detail?searchType=${noticeDTO.searchType}&searchTxt=${noticeDTO.searchTxt}&page=${noticeDTO.page}&postIdx=${list.postIdx}"/>" >
-										<c:out escapeXml='true' value='${list.categoryPostIdx}' />
+										<c:out escapeXml='true' value='${list.categoryPostName}' />
 									</a>
 								</td>
 								<td>
@@ -76,23 +76,27 @@
 					</c:when>
 					<c:otherwise>
 						<tr>
-							<td  colspan="5"><span>데이터가 없습니다.</span></td>
+							<td colspan="5"><span>데이터가 없습니다.</span></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
 				</tbody>
 			</table>
 			<div class="paging" align="center">
-				<c:out escapeXml='false'  value="${pagingHtml}"/>
+				<c:out escapeXml='false' value="${pagingHtml}"/>
 			</div>
 		</div>
 		<div>
 			<button type="button" class="btn btn-sm btn-primary" onclick="javascript:location.href='/notice/write';">글쓰기</button>
+
+			<div style='width:80px;float: right;'>
+				<input type='button' class="btn btn-sm btn-primary" onclick="location.href='/'" name='btn2' value='홈'>
+
+			</div>
+			<!-- 로그인 사용자에게만 등록버튼을 노출한다. -->
+			<!-- <c:if test="${sessionScope.loginMemberInfo != null}" >-->
+			<!-- </c:if>-->
 		</div>
-		<!-- 로그인 사용자에게만 등록버튼을 노출한다. -->
-		<!-- <c:if test="${sessionScope.loginMemberInfo != null}" >-->
-		<!-- </c:if>-->
-	</div>
 </section>
 <!-- 푸터 임포트 -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
@@ -100,3 +104,10 @@
 	$(document).ready(function() {
 	});
 </script>
+
+<style type="text/css">
+	a:link { text-decoration: none;}
+	a:visited { text-decoration: none;}
+	a:active { text-decoration: none;}
+	a:hover {text-decoration:underline;}
+</style>
