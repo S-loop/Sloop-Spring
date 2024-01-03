@@ -17,6 +17,7 @@ public class NoticeDTO {
     private Integer postNoticeHits;				/*조회수*/
     private Integer categoryPostIdx;			/*카테고리 키*/
     private String 	postNoticePinned;			/*상단 고정여부*/
+    private String  categoryPostName;			/*카테고리 이름*/
 
     /*** 페이징 관련 ***/
     /** 현재페이지 */
