@@ -16,6 +16,10 @@
 				<input type="text" class="form-control" name="postNoticeTitle" id="postNoticeHits" readonly value="${noticeDTO.postNoticeHits}">
 			</div>
 			<div class="mb-3">
+				<label for="title">작성일</label>
+				<input type="text" class="form-control" name="postNoticeTitle" id="postNoticeHits" readonly value="${noticeDTO.postNoticeRegDate}">
+			</div>
+			<div class="mb-3">
 				<label for="title">제목</label>
 				<input type="text" class="form-control" name="postNoticeTitle" id="postNoticeTitle" readonly value="${noticeDTO.postNoticeTitle}">
 			</div>
@@ -28,7 +32,6 @@
 				<!-- 로그인기능 오류로 임시 강제값 지정 -->
 				<input type="text" class="form-control" name="memberIdx" id="memberIdx" readonly value="${noticeDTO.memberIdx}" >
 			</div>
-
 			<div class="mb-3">
 				<label for="content">내용</label>
 				<textarea class="form-control" rows="5" name="postNoticeContents" id=postNoticeContents readonly >${noticeDTO.postNoticeContents}</textarea>
@@ -54,7 +57,6 @@
 			<input type='button' class="btn btn-sm btn-primary" onclick="location.href='/'" name='btn2' value='홈'>
 
 		</div>
-
 </section>
 <!-- 푸터 임포트 -->
 <jsp:include page="../include/footer.jsp"></jsp:include>
