@@ -14,14 +14,14 @@
 		</selectKey>
 		INSERT INTO postNotice
 		(
-		postIdx					/*공지사항 키*/
-		, postNoticeTitle		/*공지사항 제목*/
-		, postNoticeContents	/*공지사항 내용*/
-		, memberIdx				/*회원 키*/
-		, postNoticeRegDate		/*등록일*/
-		, postNoticeHits		/*조회수*/
-		, categoryPostIdx		/*카테고리 키*/
-		, postNoticePinned		/*상단 고정여부*/
+		postIdx /*공지사항 키*/
+		, postNoticeTitle /*공지사항 제목*/
+		, postNoticeContents /*공지사항 내용*/
+		, memberIdx /*회원 키*/
+		, postNoticeRegDate /*등록일*/
+		, postNoticeHits /*조회수*/
+		, categoryPostIdx /*카테고리 키*/
+		, postNoticePinned /*상단 고정여부*/
 		)
 		VALUES
 		(
@@ -61,7 +61,7 @@
     [MySQL]
     title like CONCAT('%',#{keyword},'%')
     [Oracle]
-    title like '%' ||  #{keyword} || '%'
+    title like '%' || #{keyword} || '%'
     [MSSQL]
     title like '%' + #{keyword} + '%'
     -->
@@ -71,10 +71,13 @@
 		<where>
 			<if test=" searchType != null and searchType != '' ">
 				<if test="searchType == 'title' ">
-					AND A.postNoticeTitle LIKE '%' ||  #{searchTxt} || '%'
+					AND A.postNoticeTitle LIKE CONCAT('%',#{searchTxt},'%')
 				</if>
 				<if test="searchType == 'content' ">
-					AND A.postNoticeContents LIKE '%' ||  #{searchTxt} || '%'
+					AND A.postNoticeContents LIKE CONCAT('%',#{searchTxt},'%')
+				</if>
+				<if test="searchType == 'all' ">
+					AND ( A.postNoticeContents LIKE CONCAT('%',#{searchTxt},'%') OR A.postNoticeTitle LIKE CONCAT('%',#{searchTxt},'%') )
 				</if>
 			</if>
 		</where>
@@ -118,7 +121,7 @@
 		/* Query > kr.co.sloop.notice.mapper.NoticeMapper.selectNoticeCnt */
 		SELECT
 		COUNT(*) AS CNT
-		FROM postNotice A		/*공지사항 테이블*/
+		FROM postNotice A /*공지사항 테이블*/
 		<include refid="schSql" />
 	</select>
 
