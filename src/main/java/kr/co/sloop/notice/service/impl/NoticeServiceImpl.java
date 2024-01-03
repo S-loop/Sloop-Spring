@@ -11,16 +11,16 @@ import kr.co.sloop.notice.service.NoticeService;
 
 @Service
 public class NoticeServiceImpl implements NoticeService {
-	
+
 	@Autowired
 	NoticeMapper noticeMapper;
-	
+
 	//공지사항 갯수
 	@Override
 	public int selectNoticeCnt(NoticeDTO noticeDto)throws Exception {
 		return noticeMapper.selectNoticeCnt(noticeDto);
 	}
-	
+
 	//페이징 공지사항 목록조회
 	@Override
 	public List<NoticeDTO> selectListNoticePaging(NoticeDTO noticeDto)throws Exception{
@@ -28,29 +28,30 @@ public class NoticeServiceImpl implements NoticeService {
 		noticeDto.setStartIndex(startIndex);
 		return noticeMapper.selectListNoticePaging(noticeDto);
 	}
-	
-    //공지사항 상세조회
-	@Override
-    public NoticeDTO selectDetailNotice(NoticeDTO noticeDto)throws Exception {
-        return noticeMapper.selectDetailNotice(noticeDto);
-    }
 
-    //공지사항 저장
+	//공지사항 상세조회
+	@Override
+	public NoticeDTO selectDetailNotice(NoticeDTO noticeDto)throws Exception {
+		noticeMapper.updatePostNoticeHits(noticeDto.getPostIdx());
+		return noticeMapper.selectDetailNotice(noticeDto);
+	}
+
+	//공지사항 저장
 	@Override
 	public int insertNotice(NoticeDTO noticeDto)throws Exception {
-        return noticeMapper.insertNotice(noticeDto);
-    }
-    
-    //공지사항 삭제
+		return noticeMapper.insertNotice(noticeDto);
+	}
+
+	//공지사항 삭제
 	@Override
 	public int deleteNotice(NoticeDTO noticeDto)throws Exception {
-        return noticeMapper.deleteNotice(noticeDto);
-    }
+		return noticeMapper.deleteNotice(noticeDto);
+	}
 
-    //공지사항 수정
+	//공지사항 수정
 	@Override
 	public int updateNotice(NoticeDTO noticeDto)throws Exception {
-        return noticeMapper.updateNotice(noticeDto);
-    }
-	
+		return noticeMapper.updateNotice(noticeDto);
+	}
+
 }
