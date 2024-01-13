@@ -122,7 +122,7 @@ public class PostForumController {
             }
             byte[] bytes = upload.getBytes();
 
-            //이미지 경로 생성
+            // 이미지 경로 생성
             log.info("\n\n ===== 현재 경로 : " + request.getContextPath());
             String path = "/resources/uploads/";    // 이미지 경로 설정(폴더 자동 생성)
 
@@ -243,6 +243,7 @@ public class PostForumController {
         keyword = keyword.trim();
 
         // 검색 + 페이징을 위한 객체
+        // boardType 3 [*****]
         SearchDTO searchDTO = searchServiceImpl.initialize(boardIdx, page, searchType, keyword, 3);
         model.addAttribute("searchDTO", searchDTO);
 
