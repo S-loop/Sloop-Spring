@@ -174,7 +174,7 @@ public class PostForumController {
     }
 
     // 서버로 전송된 이미지 가져오기
-    @RequestMapping(value="/ckImgSubmit")
+    @GetMapping(value="/ckImgSubmit")
     public void ckSubmit(@RequestParam(value="uid") String uid,
                         @RequestParam(value="fileName") String fileName,
                         HttpServletRequest request, HttpServletResponse response)

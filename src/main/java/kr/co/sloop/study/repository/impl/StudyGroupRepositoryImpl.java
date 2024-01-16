@@ -69,7 +69,11 @@ public class StudyGroupRepositoryImpl implements StudyGroupRepository {
 
     @Override
     public StudyGroupDTO getStudyGroupByGroupCode(String studyGroupCode) {
-        return studyGroupMapper.selectStudyGroupByGroupCode(studyGroupCode);
+        StudyGroupDTO studyGroup =  studyGroupMapper.selectStudyGroupByGroupCode(studyGroupCode);
+        studyGroup.setStudyGroupGrade(categoryGradeMap.get(studyGroup.getStudyGroupGradeCode()));
+        studyGroup.setStudyGroupSubject(categorySubjectMap.get(studyGroup.getStudyGroupSubjectCode()));
+        studyGroup.setStudyGroupRegion(categoryRegionMap.get(studyGroup.getStudyGroupRegionCode()));
+        return studyGroup;
     }
 
     @Override
@@ -78,8 +82,8 @@ public class StudyGroupRepositoryImpl implements StudyGroupRepository {
     }
 
     @Override
-    public List<HashMap<String,String>> getBoardIdxsByGroupCode(int studyGroupIdx) {
-        return studyGroupMapper.getBoardIdxsByGroupCode(studyGroupIdx);
+    public List<HashMap<String,String>> getBoardIdxsByGroupCode(String studyGroupCode) {
+        return studyGroupMapper.getBoardIdxsByGroupCode(studyGroupCode);
     }
 
     @Override
@@ -117,5 +121,15 @@ public class StudyGroupRepositoryImpl implements StudyGroupRepository {
         categoryRegionList = studyGroupMapper.getAllRegionName();
         for(CategoryRegionDTO i : categoryRegionList)
             categoryRegionMap.put(i.getCategoryRegionCode(),i.getCategoryRegionName());
+    }
+    // 지역 카테고리 테이블을 불러와서 categorySubjectMap 필드에 저장
+    public List<CategoryRegionDTO> getCategoryRegion2() {
+        List<CategoryRegionDTO> categoryRegionList = studyGroupMapper.getAllRegionName();
+        return categoryRegionList;
+    }
+
+    @Override
+    public String getGroupNameByGroupCode(String studyGroupCode) {
+        return studyGroupMapper.getGroupNameByGroupCode(studyGroupCode);
     }
 }
