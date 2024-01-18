@@ -7,47 +7,66 @@
             integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
             crossorigin="anonymous"></script>
     <title>S-loop 회원가입</title>
+    <link href="/resources/css/style_signup.css" rel="stylesheet">
 </head>
 <body>
+<br />
+<main class="col-12 mx-auto px-md-4">
+<div class="signup-form">
 <%-- form:errors 가 span 으로 나오는 출력문과 / <p> 태그로 유효성검사 나오는건 조장님 컨트롤하기 편하신거로 선택해서 쓰시면 될거 같아요--%>
 <%--@elvariable id="memberDTO" type="kr.co.sloop.member.domain.MemberDTO"--%>
 <form:form action="/member/signup" method="post" modelAttribute="memberDTO">
-    <p>이 메 일 : <form:input path="memberEmail"  placeholder="이메일" required="true"/>
+    <div style="text-align: center; margin-bottom: 2em;">
+        <h3 class="title_text">회원가입</h3>
+    </div>
+    <div class="form-group row">
+    <p>이 메 일
+        <form:input path="memberEmail" type="email" placeholder="이메일" class="form-control" required="true"/>
         <form:button type="button" value="중복확인" onclick="emailCheck()">중복확인</form:button></p>
     <%--안내 문구--%>
     <span>ex) "email@email.com"</span>
     <%--에러 문구--%>
     <form:errors path="memberEmail" cssStyle="color: red"/>
     <p id="check-result"></p>
+    </div>
 
-    <p>비밀번호 : <form:input path="memberPassword" type="password" placeholder="비밀번호" required="true" /></p>
+    <div class="form-group row">
+    <p>비밀번호 <form:input path="memberPassword" type="password" placeholder="비밀번호" class="form-control" required="true" /></p>
     <%--안내 문구--%>
     <span>영어 대소문자,숫자 한 개 이상,특수문자(!,@,#,$)중 한 개 이상을 반드시 포함해야 합니다.(8~16자)</span>
     <%--에러 문구--%>
     <form:errors path="memberPassword" cssStyle="color: red"/>
+    </div>
 
-    <p>닉 네 임 : <form:input path="memberNickname" placeholder="닉네임" required="true"/>
+    <div class="form-group row">
+    <p>닉 네 임 <form:input path="memberNickname" placeholder="닉네임" class="form-control" required="true"/>
         <form:button type="button" value="중복확인" onclick="nicknameCheck()">중복확인</form:button></p>
     <%--안내 문구--%>
     <span>영문 대소문자,숫자,밑줄(_) 중 하나 이상 포함(2~19자)</span>
     <%--에러 문구--%>
     <form:errors path="memberNickname" cssStyle="color: red"/>
     <p id="check-result2"></p>
+    </div>
 
-    <p>성   별 :
+    <div class="form-group row">
+    <p>성   별
         <form:radiobutton path="memberGender" id="male" value="남자" />
         <label for="male">남자</label>
         <form:radiobutton path="memberGender" id="female" value="여자" />
         <label for="female">여자</label>
     </p>
     <form:errors path="memberGender" cssStyle="color: red"/>
+    </div>
 
-    <p>전화번호 : <form:input path="memberPhonenumber" type="text" placeholder="핸드폰번호" required="true"/>
+    <div class="form-group row">
+    <p>전화번호  <form:input path="memberPhonenumber" type="text" placeholder="핸드폰번호" class="form-control" required="true"/>
         <form:button type="button" value="중복확인" onclick="phoneNumbCheck()">중복확인</form:button></p>
     <form:errors path="memberPhonenumber" cssStyle="color: red"/>
     <p id="check-result3"></p>
+    </div>
 
-    <p>회원대분류 :
+    <div class="form-group row">
+    <p>회원대분류
         <form:select path="memberGradeCode" onchange="memberDivisionChange(this)" required="true">
             <form:option value="">선택하세요.</form:option>
             <form:option value="초등학생">초등학생</form:option>
@@ -56,13 +75,18 @@
         </form:select>
     </p>
     <form:errors path="memberGradeCode" cssStyle="color: red"/>
+    </div>
     <%--<p>회원소분류 :
         <form:select name="memberGradeCode" id="memberGradeCode_sub" path="memberGradeCode">
             <option value="choose">선택하세요.</option>
         </form:select></p>--%>
-    <p>학 교 명 : <form:input type="text" path="memberSchool" required="true"/></p>
+    <div class="form-group row">
+    <p>학 교 명  <form:input type="text" path="memberSchool" class="form-control" required="true"/></p>
     <form:errors path="memberSchool" cssStyle="color: red"/>
-    <p>관심 과목 :
+    </div>
+
+    <div class="form-group row">
+    <p>관심 과목
         <form:checkbox path="memberSubjectCode" value="국어"/>국어
         <form:checkbox path="memberSubjectCode" value="영어"/>영어
         <form:checkbox path="memberSubjectCode" value="수학"/>수학
@@ -71,7 +95,10 @@
         <form:checkbox path="memberSubjectCode" value="기타"/>기타
     </p>
     <form:errors path="memberSubjectCode" cssStyle="color: red"/>
-    <p>지역대분류 :
+    </div>
+
+    <div class="form-group row">
+    <p>지역대분류 
         <form:select path="memberRegionCode" onchange="memberSigugunChange(this)" required="true">
             <form:option value="">선택하세요.</form:option>
             <form:option value="900">서울특별시</form:option>
@@ -94,13 +121,22 @@
         </form:select>
     </p>
     <form:errors path="memberRegionCode" cssStyle="color: red"/>
+    </div>
     <%--<p>지역소분류 :
         <select name="memberRegionCode" id="memberRegionCode_sub" required>
             <option value="choose">선택하세요.</option>
         </select></p>--%>
+    <div class="form-group row">
     <input type="submit" value="회원가입">
+    </div>
 </form:form>
+
+</div>
+</main>
+<br />
 </body>
+
+
 <script type="text/javascript">
 
     /** 이메일 유효성 검사 JavaScript & AJAX & JSON */
