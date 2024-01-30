@@ -148,6 +148,7 @@
 
 <details>
   <summary>ER 다이어그램</summary>
+    ![image](https://github-production-user-asset-6210df.s3.amazonaws.com/40616792/300685260-0ef157b2-b9bc-451a-9009-d698dcc5a9bd.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240130%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240130T050500Z&X-Amz-Expires=300&X-Amz-Signature=0ca3bef3594aa5a4bb1b29f212580249dfee54dfedeabe02efc125b1ce946c87&X-Amz-SignedHeaders=host&actor_id=40616792&key_id=0&repo_id=736235716)
 
 </details>
 
